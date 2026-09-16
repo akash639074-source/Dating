@@ -1,0 +1,31 @@
+# Render.com ke liye deployment config.
+# "New +" -> "Blueprint" -> is repo ko connect karein, Render khud
+# is file ko padhkar service bana dega.
+#
+# NOTE: neeche diya "disk" section persistent storage ke liye hai
+# (profile photos aur chat data restart/redeploy ke baad bhi bane rahein).
+# Render ka FREE plan persistent disks support NAHI karta - disk sirf
+# paid instance types (Starter aur upar) par milta hai. Agar aap free
+# plan par test kar rahe hain, neeche poora "disk:" block hata dein -
+# app tab bhi chalegi, bas har restart/redeploy par uploads aur data
+# reset ho jayenge.
+
+services:
+  - type: web
+    name: saathi-app
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: STORAGE_DIR
+        value: /var/data
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: saathi-storage
+      mountPath: /var/data
+      sizeGB: 1

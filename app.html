@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saathi — Chat</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar" id="sidebar">
+    <div class="side-head">
+      <img id="myPhoto" src="" alt="me">
+      <div>
+        <div class="me-name" id="myName">...</div>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+      </div>
+      <button class="change-photo" id="changePhotoBtn">Photo badlein</button>
+      <input type="file" id="photoInput" accept="image/*" style="display:none;">
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="username se search karein...">
+    </div>
+
+    <div class="list" id="resultsList"></div>
+
+    <div style="padding:10px 16px; font-size:12px; font-weight:700; color:var(--ink-soft); border-top:1px solid rgba(52,18,39,.08);">
+      BAATCHEET
+    </div>
+    <div class="list" id="convoList"></div>
+  </div>
+
+  <div class="chat-panel" id="chatPanel">
+    <div class="center-msg" id="chatEmpty">
+      Kisi username ko search karke chat shuru karein.
+    </div>
+
+    <div id="chatArea" style="display:none; flex-direction:column; height:100%;">
+      <div class="chat-head">
+        <button class="back-btn" id="backBtn">←</button>
+        <img id="chatPhoto" src="" alt="">
+        <h4 id="chatName"></h4>
+      </div>
+      <div class="chat-body" id="chatBody"></div>
+      <div class="chat-input-row">
+        <input type="text" id="msgInput" placeholder="Message likhein...">
+        <button class="send-btn" id="sendBtn">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
